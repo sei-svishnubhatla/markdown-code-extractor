@@ -61,7 +61,9 @@ def extract_code_blocks(markdown_text: str) -> list[tuple[str, str]]:
              - The extracted code content
     """
     code_blocks = []
-    code_block_pattern = re.compile(r'```([a-zA-Z0-9_-]*)\n(.*?)```', re.DOTALL)
+
+    # TODO: this regex expression will need to be finalized based on the Markdown files
+    code_block_pattern = re.compile(r'``` ([a-zA-Z0-9_-]*)\n(.*?)```', re.DOTALL)
 
     for match in code_block_pattern.finditer(markdown_text):
         code_type = match.group(1).strip().lower() if match.group(1) else "plain"
