@@ -37,10 +37,6 @@ This command will extract code blocks from `example.md` and save them in the `ou
     python markdown-code-extract.py <markdown_file> <output_directory>
     ```
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
 ## Author
 
 For any inquiries, please contact [Sasank Vishnubhatla](mailto:svishnubhatla@cert.org).
