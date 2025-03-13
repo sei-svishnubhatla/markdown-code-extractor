@@ -43,4 +43,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Author
 
-For any inquiries, please contact [sasank@vishnubhatlas.net](mailto:sasank@vishnubhatlas.net).
+For any inquiries, please contact [Sasank Vishnubhatla](mailto:svishnubhatla@cert.org).
