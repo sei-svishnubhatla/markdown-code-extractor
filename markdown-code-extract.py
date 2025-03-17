@@ -62,7 +62,7 @@ def extract_code_blocks(markdown_text: str) -> list[tuple[str, str]]:
     """
     code_blocks = []
 
-    # TODO: this regex expression will need to be finalized based on the Markdown files
+    # NOTE: it looks like ``` lang is used consistently
     code_block_pattern = re.compile(r'``` ([a-zA-Z0-9_-]*)\n(.*?)```', re.DOTALL)
 
     for match in code_block_pattern.finditer(markdown_text):
