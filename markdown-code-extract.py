@@ -11,7 +11,7 @@
 # Example:
 #   python markdown-code-extract.py example.md output/
 #
-# Author: Sasank Vishnubhatla <sasank@vishnubhatlas.net>
+# Author: Sasank Vishnubhatla <svishnubhatla@cert.org>
 # ---------------------------------------------
 
 import argparse
