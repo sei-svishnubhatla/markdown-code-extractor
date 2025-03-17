@@ -1,3 +1,0 @@
-double complex p = CMPLX( 2, 3); // 2 + 3i
-if (isfinite(p) // Undefined Behavior
-  // ...
