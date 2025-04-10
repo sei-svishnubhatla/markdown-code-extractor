@@ -20,7 +20,7 @@ import re
 VERBOSITY = False
 
 # Safe maximum length for file names
-MAX_FILENAME_LENGTH = 100
+MAX_FILENAME_LENGTH = 50
 
 # Global template Makefile
 TEMPLATE_MAKEFILE = """\
