@@ -1,4 +1,4 @@
-# markdown-code-extract.py
+# markdown-code-extractor.py
 # ---------------------------------------------
 # This script extracts code blocks from a Markdown file and saves them
 # as individual files in a specified output directory. The script detects
@@ -6,10 +6,10 @@
 # an appropriate file extension based on a predefined mapping.
 #
 # Usage:
-#   python markdown-code-extract.py <markdown_file> <output_directory>
+#   python markdown-code-extractor.py <markdown_file> <output_directory>
 #
 # Example:
-#   python markdown-code-extract.py example.md output/
+#   python markdown-code-extractor.py example.md output/
 #
 # Author: Sasank Vishnubhatla <svishnubhatla@cert.org>
 # ---------------------------------------------
@@ -19,13 +19,16 @@ import re
 # Global verbosity flag
 VERBOSITY = False
 
+# Safe maximum length for file names
+MAX_FILENAME_LENGTH = 100
+
 # Global template Makefile
 TEMPLATE_MAKEFILE = """\
 # Simple Makefile to compile each C script created by Markdown Code Extract
 # This is generated from a template
 
 CC := gcc
-CFLAGS := -g -time -v
+CFLAGS := -g3 -Wall -c -time -v --std=c2x
 
 SRCS := $(wildcard *.c)
 PROGS := $(patsubst %.c,%,$(SRCS))
@@ -148,13 +151,14 @@ def save_code_blocks(code_blocks: list[tuple[str, str, str]], output_dir: str, v
 
         # build file name and truncate if necessary
         file_name_tail = f"_block_{padded_i}"
-        sanitized_name = sanitized_name_full[:50 - len(file_name_tail)]
+        max_sanitized_length = MAX_FILENAME_LENGTH - len(file_name_tail)
+        sanitized_name = sanitized_name_full[:max_sanitized_length]
         file_name = sanitized_name + file_name_tail
 
         file_path = os.path.join(
             output_dir, f"{file_name}.{file_extension}")
         with open(file_path, "w", encoding="utf-8") as file:
-            file.write(block)
+            file.write(block + "\n")
 
         if VERBOSITY or (verbosity == True):
             print(f"Saved Code Block {i} ({code_type}) to {file_path}")
