@@ -146,8 +146,13 @@ def save_code_blocks(code_blocks: list[tuple[str, str, str]], output_dir: str, v
         pad_length = len(str(len(code_blocks) + 1))
         padded_i = str(i).rjust(pad_length, "0")
 
+        # sanitize string
+        def sanitize(s): return "".join(
+            c for c in s if c.isalnum() or c in (' ', '.', '_')).rstrip()
+
+
         # sanitize heading for file name
-        sanitized_name_full = re.sub(r"[/\\?%*:|\"<>\x7F\x00-\x1F]", "-", heading)
+        sanitized_name_full = sanitize(heading)
 
         # build file name and truncate if necessary
         file_name_tail = f"_block_{padded_i}"
