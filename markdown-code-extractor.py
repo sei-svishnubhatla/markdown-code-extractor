@@ -28,7 +28,7 @@ TEMPLATE_MAKEFILE = """\
 # This is generated from a template
 
 CC := gcc
-CFLAGS := -g3 -Wall -c -time -v --std=c2x
+CFLAGS := -g3 -Wall -v --std=c2x -c
 
 SRCS := $(wildcard *.c)
 PROGS := $(patsubst %.c,%,$(SRCS))
