@@ -31,13 +31,13 @@ CC := gcc
 CFLAGS := -g3 -Wall -v --std=c2x -c
 
 SRCS := $(wildcard *.c)
-PROGS := $(patsubst %.c,%,$(SRCS))
+PROGS := $(patsubst %.c,%.o,$(SRCS))
 
 all: $(PROGS)
 
 # Rule to compile each C file
-%: %.c
-	$(CC) $(CFLAGS) -o $@ $<
+%.o: %.c
+	$(CC) $(CFLAGS) -o $@.o $<
 
 clean:
 	rm -f $(PROGS)
